@@ -27,11 +27,11 @@
       <button v-on:click="addComment" type="submit" class="btn btn-primary">Comentar</button>
     </div>
       <div class="list-group">
-        <div class="list-group-item" v-for="comment in comments">
+        <div class="list-group-item" v-for="(comment, index) in allComments">
           <span class="comment__author">Autor: <strong>{{ comment.name }}</strong></span>
          <p>{{ comment.message }}</p>
          <div>
-          <a href="#" title="Excluir">Excluir</a>
+          <a href="#" title="Excluir" v-on:click.prevent=" removeComment(index)">Excluir</a>
         </div>
       </div>
       <hr />
@@ -39,21 +39,15 @@
       `,
       data() {
         return {
-           comments: [
-             {
-               name: '',
-               message: ''
-             }
-           ],
+          // Aqui deixo vazio comentário, para ele começcar vazio
+           comments: [],             
            name: '',
            message: ''
-        }
+            }
       },
         methods: {
           addComment() {
-            if (this.name.trim() == '' || this.message.trim() == ''){
-              return;
-            }
+           
             this.comments.push({
               name: this.name,
               message: this.message
@@ -61,9 +55,20 @@
            // Assim que ele comentar, vai apagar os campos para ficar vazio
            this.name = '';
            this.message = '';
-          }
-         
-      }
+          },
+        removeComment(index){
+          this.comments.splice(index, 1);
+       }               
+      },
+      // Computed é bom pois não preciso colocar esse lógica direto no meu template
+      computed: {
+        allComments(){
+          return this.comments.map(comment => ({
+            ...comment,
+            name: comment.name.trim() === '' ? 'Anonimo' : comment.name
+          }))
+        }
+      },          
     })
   </script>
 </body>
