@@ -68,7 +68,14 @@
             name: comment.name.trim() === '' ? 'Anonimo' : comment.name
           }))
         }
-      },          
+      },
+      // Consigo monitorar as atividades e  a partir da ai tomar uma ação
+      // Ele bom para salvar no banco dados, quando deletou, quando atualizou e assim vai
+      watch: {
+        comments(val){
+          console.log('val', val);
+        }
+      }            
     })
   </script>
 </body>
