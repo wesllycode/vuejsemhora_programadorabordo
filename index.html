@@ -19,12 +19,12 @@
     <hr />
     <div class ="form-todo form-group">
       <p>
-          <input placeholder="nome" type="text" name="author" />
+          <input placeholder="nome" type="text" name="author" class="form-control" v-model="name" />
       </p>
       <p>
-        <textarea placeholder="Comentário" name="message" class="form-control"></textarea>
+        <textarea placeholder="Comentário" name="message" class="form-control" v-model="message"></textarea>
       </p>
-      <button type="submit" class="btn btn-primary">Comentar</button>
+      <button v-on:click="addComment" type="submit" class="btn btn-primary">Comentar</button>
     </div>
       <div class="list-group">
         <div class="list-group-item" v-for="comment in comments">
@@ -37,15 +37,25 @@
       <hr />
   </div>      
       `,
-      data(){
+      data() {
         return {
            comments: [
              {
                name: 'Ayrton',
                message: 'Lorem Ipsum'
              }
-           ]
+           ],
+           name: '',
+           message: ''
         }
+      },
+        methods: {
+          addComment() {
+           this.comments.push({
+              name: this.name,
+              message: this.message
+           })
+          }        
       }
     })
   </script>
