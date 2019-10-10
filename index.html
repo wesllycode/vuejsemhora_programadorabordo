@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Comentarios</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      template: `
+      <div class="container">
+    <h1> Comentários </h1>
+    <hr />
+    <div class ="form-todo form-group">
+      <p>
+          <input placeholder="nome" type="text" name="author" />
+      </p>
+      <p>
+        <textarea placeholder="Comentário" name="message" class="form-control"></textarea>
+      </p>
+      <button type="submit" class="btn btn-primary">Comentar</button>
+    </div>
+      <div class="list-group">
+        <div class="list-group-item">
+          <span class="comment_author">Autor: <strong>Ayrton</strong></span>
+         <p> Mensagem de Teste</p>
+         <div>
+          <a href="#" title="Excluir">Excluir</a>
+        </div>
+      </div>
+      <hr />
+  </div>      
+      `,
+      data(){
+        return {
+           comments: [
+             {
+               name: 'Ayrton',
+               message: 'Lorem Ipsum'
+             }
+           ]
+        }
+      }
+    })
+  </script>
+</body>
+</html>
