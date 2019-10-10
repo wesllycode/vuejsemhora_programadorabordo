@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>Comentarios</title>
-</head>
-<body>
-  <div id="app"></div>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script>
-    new Vue({
-      el: '#app',
-      template: `
-      <div class="container">
+<template>
+  <div class="container">
     <h1> Comentários </h1>
     <hr />
     <div class ="form-todo form-group">
@@ -35,10 +20,13 @@
         </div>
       </div>
       <hr />
+  </div> 
   </div>
-  </div>      
-      `,
-      data() {
+</template>
+
+<script>
+export default {
+  data() {
         return {
           // Aqui deixo vazio comentário, para ele começcar vazio
            comments: [],             
@@ -76,8 +64,6 @@
         comments(val){
           console.log('val', val);
         }
-      }            
-    })
-  </script>
-</body>
-</html>
+      } 
+  }
+</script>
