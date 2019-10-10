@@ -41,8 +41,8 @@
         return {
            comments: [
              {
-               name: 'Ayrton',
-               message: 'Lorem Ipsum'
+               name: '',
+               message: ''
              }
            ],
            name: '',
@@ -51,11 +51,18 @@
       },
         methods: {
           addComment() {
-           this.comments.push({
+            if (this.name.trim() == '' || this.message.trim() == ''){
+              return;
+            }
+            this.comments.push({
               name: this.name,
               message: this.message
-           })
-          }        
+           });
+           // Assim que ele comentar, vai apagar os campos para ficar vazio
+           this.name = '';
+           this.message = '';
+          }
+         
       }
     })
   </script>
