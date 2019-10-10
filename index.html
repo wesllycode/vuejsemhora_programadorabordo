@@ -27,9 +27,9 @@
       <button type="submit" class="btn btn-primary">Comentar</button>
     </div>
       <div class="list-group">
-        <div class="list-group-item">
-          <span class="comment_author">Autor: <strong>Ayrton</strong></span>
-         <p> Mensagem de Teste</p>
+        <div class="list-group-item" v-for="comment in comments">
+          <span class="comment__author">Autor: <strong>{{ comment.name }}</strong></span>
+         <p>{{ comment.message }}</p>
          <div>
           <a href="#" title="Excluir">Excluir</a>
         </div>
