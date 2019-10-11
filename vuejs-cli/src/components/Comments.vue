@@ -7,7 +7,9 @@
     -->
     <FormTodo v-on:add-todo="addComment"></FormTodo>    
       <div class="list-group">
-        <div class="list-group-item" v-for="(comment, index) in allComments">
+      <p v-if="comments.length <= 0"> Sem comentários... </p>
+        <!-- aqui estava dando um erro por causa  v-bind:key | È uma diretiva ligação de dados com template com a parte do view, algoritmo vai aplicar mudanças. Para facilitar a vida dele quando tiver interação de lista algo do tipo eu coloque uma chave única para ajuda o vue identificar as mudanças, o usei o index porque ele pega numero da variável -->
+        <div class="list-group-item" v-for="(comment, index) in allComments" v-bind:key="index">
           <span class="comment__author">Autor: <strong>{{ comment.name }}</strong></span>
          <p>{{ comment.message }}</p>
          <div>

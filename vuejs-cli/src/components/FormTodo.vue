@@ -22,7 +22,7 @@ export default {
            if(this.message.trim() == ''){
              return;
            } 
-            // Quando clico no botão ele aciona esse evento add-todo passando comentario  para componente que criei no Comments.vue
+            // Quando clico no botão ele aciona esse evento add-todo passando comentario  para componente que criei no Comments.vue.  Esse emite como se fosse propagar o evento para outros locais.
            this.$emit('add-todo', {
              name: this.name,
              message: this.message,
