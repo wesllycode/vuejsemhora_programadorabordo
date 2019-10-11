@@ -2,49 +2,39 @@
   <div class="container">
     <h1> Comentários </h1>
     <hr />
-    <div class ="form-todo form-group">
-      <p>
-          <input placeholder="nome" type="text" name="author" class="form-control" v-model="name" />
-      </p>
-      <p>
-        <textarea placeholder="Comentário" name="message" class="form-control" v-model="message"></textarea>
-      </p>
-      <button v-on:click="addComment" type="submit" class="btn btn-primary">Comentar</button>
-    </div>
+    <!-- Aqui v-on: para pegar ação nesse caso vou pegar o que criei emit pegar toda ação passado por la 
+         Criei um componente para formulário para ambos conversarem
+    -->
+    <FormTodo v-on:add-todo="addComment"></FormTodo>    
       <div class="list-group">
         <div class="list-group-item" v-for="(comment, index) in allComments">
           <span class="comment__author">Autor: <strong>{{ comment.name }}</strong></span>
          <p>{{ comment.message }}</p>
          <div>
-          <a href="#" title="Excluir" v-on:click.prevent=" removeComment(index)">Excluir</a>
+          <a href="#" title="Excluir" v-on:click.prevent="removeComment(index)">Excluir</a>
         </div>
       </div>
+    </div>
       <hr />
-  </div> 
-  </div>
+  </div>  
 </template>
 
 <script>
+import FormTodo from './FormTodo';
 export default {
+  components:{
+    FormTodo
+  },
   data() {
         return {
           // Aqui deixo vazio comentário, para ele começcar vazio
-           comments: [],             
-           name: '',
-           message: ''
-            }
+           comments: []          
+        }
       },
-        methods: {
-          addComment() {
-           
-            this.comments.push({
-              name: this.name,
-              message: this.message
-           });
-           // Assim que ele comentar, vai apagar os campos para ficar vazio
-           this.name = '';
-           this.message = '';
-          },
+        methods: { 
+        addComment(comment) {
+          this.comments.push(comment);
+        },         
         removeComment(index){
           this.comments.splice(index, 1);
        }               
